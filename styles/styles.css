@@ -16,6 +16,7 @@
   --font-color3: var(--nord-yellow);
   --bg-color: var(--nord-black4);
   --btn-color: var(--nord-blue1);
+  --app-btn-color: vaR(--nord-blue4);
   --btn-border-color: var(--nord-blue4);
   --btn-border-color2: #53749d;
   --btn-shadow-color: var(--nord-black1);
@@ -26,11 +27,19 @@
   --btn-size: 3rem;
   --btn-size-adjusted: 3.2rem;
   --btn-expand-ratio: 3;
+  --app-row-height: 5rem;
+  --app-btn-size: 3.5rem;
+  --app-btn-width: 13.5rem;
+  --app-btn-expand-ratio: 4.5;
+  --app-btn-margin: calc(
+    0.5 * calc(var(--app-row-height) - var(--app-btn-size))
+  );
   --btn-margin: calc(0.5 * calc(var(--nav-height) - var(--btn-size)));
   --btn-margin-adjusted: calc(
     0.5 * calc(var(--nav-height) - var(--btn-size-adjusted))
   );
   --btn-hover-transition: all 0.3s ease-in-out;
+  --btn-hover-transition2: all 1.8s ease-out;
   --btn-font-bounce: all 1s cubic-bezier(0.48, -0.01, 0.32, 1.275) 0.1s;
   --btn-font-bounce2: all 0.1s cubic-bezier(0.06, 0.7, 0.02, 1);
 }
@@ -64,6 +73,9 @@ iframe {
 }
 
 .nav {
+  z-index: 999;
+  position: sticky;
+  top: 0;
   width: 100vw;
   display: flex;
   flex-direction: row;
@@ -71,6 +83,14 @@ iframe {
   align-items: center;
   padding-top: calc(1.5 * var(--btn-margin));
   padding-bottom: calc(1.5 * var(--btn-margin));
+  background: var(--bg-color);
+  background: linear-gradient(
+    0deg,
+    rgba(76, 86, 106, 0) 0%,
+    rgba(76, 86, 106, 0.7166666781936084) 8%,
+    rgba(76, 86, 106, 1) 2%
+  );
+  padding-bottom: 0.5rem;
 }
 
 .btn {
@@ -113,76 +133,22 @@ iframe {
     inset -0.1rem -0.1rem 0.5rem 0.1rem var(--btn-border-color2),
     inset 0.1rem 0.15rem 0.5rem 0.3rem var(--btn-highlight-color);
 }
-#goHome {
-  position: fixed;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  top: 0;
-  left: 0;
-  height: var(--nav-height);
-  width: var(--nav-height);
-  text-align: center;
-}
-
-#goHome i {
-  padding-top: calc(0.1 * var(--nav-height));
-  padding-left: calc(0.25 * var(--nav-height));
-  font-size: 1.4rem;
-  color: var(--font-color1);
-  text-shadow: 0.03rem 0.03rem 0.1rem var(--font-color1);
-  transition: all 0.8s ease-in-out;
-}
-
-#goHome > i:hover {
-  cursor: pointer;
-  color: var(--font-color2);
-  text-shadow: 0.04rem 0.04rem 0.4rem var(--font-color1);
-}
-
-#goHome > i.welcomeHome {
-  color: var(--font-color3);
-  cursor: default;
-}
-
-#logout {
-  position: fixed;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  top: 0;
-  right: 0;
-  height: var(--nav-height);
-  width: var(--nav-height);
-  text-align: center;
-}
-
-#logout i {
-  padding-top: calc(0.1 * var(--nav-height));
-  padding-right: calc(0.25 * var(--nav-height));
-  font-size: 1.4rem;
-  color: var(--font-color1);
-  text-shadow: 0.03rem 0.03rem 0.1rem var(--font-color1);
-  transition: all 0.8s ease-in-out;
-}
-
-#logout > i:hover {
-  cursor: pointer;
-  color: var(--font-color2);
-  text-shadow: 0.04rem 0.04rem 0.4rem var(--font-color1);
-}
-
-#logout > i:focus {
-  color: var(--font-color2);
-  cursor: default;
-}
 
 .logoutTip {
-  position: relative;
-  display: inline-block;
+  font-size: 1.4rem;
+  position: absolute;
+  cursor: default;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: center;
+  right: 2rem;
   transition: var(--btn-hover-transition);
+}
+
+.logoutTip i {
+  color: var(--font-color1);
+  text-shadow: 0.03rem 0.03rem 0.4rem var(--font-color1);
 }
 
 .logoutTip .logoutTipText {
@@ -190,62 +156,113 @@ iframe {
   color: var(--font-color1);
   text-shadow: 0.03rem 0.03rem 0.1rem var(--font-color1);
   font-size: 1.1rem;
-  margin-top: 0.2rem;
   width: 3rem;
   background-color: var(--bg-color);
   text-align: center;
   padding: 0.5rem;
-  border-radius: 0.5rem;
   position: absolute;
-  left: -5.2rem;
-  top: -2.5rem;
+  right: 6rem;
   z-index: 1;
   text-transform: uppercase;
   transition: var(--btn-hover-transition);
 }
 
-.logoutTip:hover .logoutTipText {
+.logoutTip:hover > .logoutTipText {
   visibility: visible;
-  top: 0.6rem;
   color: var(--font-color2);
   text-shadow: 0.04rem 0.04rem 0.4rem var(--font-color1);
   transition: var(--btn-hover-transition);
   transition-delay: 3.2s;
+}
+
+.logoutTip > .logoutTipText {
+  visibility: hidden;
+  cursor: default;
+  color: var(--bg-color);
+  text-shadow: 0.03rem 0.03rem 0.1rem var(--bg-color);
+  font-size: 1.4rem;
+  background-color: transparent;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  z-index: 1;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: var(--btn-hover-transition);
+}
+
+.navIcon:hover ~ .logoutTipText {
+  visibility: visible;
+  cursor: default;
+  color: var(--font-color1);
+  text-shadow: 0.04rem 0.04rem 0.4rem var(--font-color1);
+  text-shadow: -0.1rem 0rem 1.7rem #eceff469;
+  opacity: 100;
+  transition: var(--btn-hover-transition2);
+  transition-delay: 0.8s;
 }
 
 .homeTip {
-  position: relative;
-  display: inline-block;
+  position: absolute;
+  cursor: default;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  left: 2rem;
   transition: var(--btn-hover-transition);
 }
 
-.homeTip .homeTipText {
+.homeTip i {
+  font-size: 1.4rem;
+  color: var(--font-color1);
+  text-shadow: 0.03rem 0.03rem 0.4rem var(--font-color1);
+  transition: all 0.8s ease-in-out;
+}
+
+.navIcon:hover {
+  cursor: pointer;
+  text-shadow: 0.04rem 0.04rem 0.8rem var(--font-color2);
+  transition: all 0.8s ease-in-out;
+}
+
+.homeTip > .homeTipText {
   visibility: hidden;
   cursor: default;
-  color: var(--font-color1);
-  text-shadow: 0.03rem 0.03rem 0.1rem var(--font-color1);
-  font-size: 1.1rem;
-  margin-top: 0.2rem;
-  width: 10rem;
-  background-color: var(--bg-color);
-  text-align: left;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  position: absolute;
-  right: -10rem;
-  top: -2.5rem;
+  color: var(--bg-color);
+  text-shadow: 0.03rem 0.03rem 0.1rem var(--bg-color);
+  font-size: 1.4rem;
+  background-color: transparent;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  top: 0.6rem;
   z-index: 1;
   text-transform: uppercase;
+  opacity: 0;
   transition: var(--btn-hover-transition);
 }
 
-.notHome:hover .homeTipText {
+.navIcon:hover ~ .homeTipText {
   visibility: visible;
+  cursor: default;
   top: 0.6rem;
-  color: var(--font-color2);
+  color: var(--font-color1);
   text-shadow: 0.04rem 0.04rem 0.4rem var(--font-color1);
-  transition: var(--btn-hover-transition);
-  transition-delay: 3.2s;
+  text-shadow: -0.1rem 0rem 1.7rem #eceff469;
+  opacity: 100;
+  transition: var(--btn-hover-transition2);
+  transition-delay: 0.8s;
+}
+
+i.welcomeHome {
+  color: var(--font-color3);
+  cursor: default;
+}
+
+i.welcomeHome:hover {
+  text-shadow: 0.03rem 0.03rem 0.4rem var(--font-color1);
+  cursor: default;
+}
+
+i.welcomeHome:hover ~ .homeTipText {
+  visibility: hidden;
 }
 
 .activeFrame {
@@ -278,57 +295,67 @@ iframe {
   transition: var(--btn-font-bounce);
 }
 
-.photoFrame {
-  height: var(--btn-size);
-  width: calc(var(--btn-expand-ratio) * var(--btn-size));
-  margin: var(--btn-margin);
-  background: var(--btn-color);
-  background-position: top calc(0.03 * var(--btn-size)) left
-    calc(0.06 * var(--btn-size));
-  background-size: auto 90%;
-  background-repeat: no-repeat;
-  transition: var(--btn-hover-transition);
+.apps {
+  width: 90vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 15rem);
+  gap: 3%;
+  justify-content: center;
 }
 
-.photoFrame:hover {
-  width: calc(var(--btn-expand-ratio) * var(--btn-size-adjusted));
-  height: var(--btn-size-adjusted);
-  margin: var(--btn-margin-adjusted);
-  box-shadow: 0.05rem 0.1rem 0.3rem 0.05rem var(--btn-shadow-color),
-    inset -0.1rem -0.1rem 0.5rem 0.1rem var(--btn-border-color);
-  transition: var(--btn-hover-transition);
+.ctg {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 2fr;
 }
 
-.photoFrame > .btn-text {
-  z-index: 99;
-  width: 5rem;
-  color: var(--font-color1);
-  text-shadow: 0.03rem 0.03rem 0.1rem var(--btn-border-color);
-  transition: var(--btn-hover-transition);
+.app-btn {
+  width: 95%;
+  height: var(--app-btn-size);
+  margin-top: var(--app-btn-margin);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   font-size: 1rem;
-}
-
-.photoFrame:hover > .btn-text {
+  background: #5e81ac37;
+  background-size: auto 75%;
+  background-position: top calc(0.125 * var(--app-btn-size)) left
+    calc(0.12 * var(--app-btn-size));
+  background-repeat: no-repeat;
+  border-radius: 0.4rem;
+  box-shadow: 0.05rem 0.1rem 0.3rem 0.05rem var(--btn-shadow-color);
   transition: var(--btn-hover-transition);
-  font-size: 1.2rem;
+  z-index: 1;
 }
 
-.menu,
-.photos {
+.app-btn:hover {
+  box-shadow: 0.05rem 0.1rem 0.5rem 0.05rem var(--btn-shadow-color),
+    0rem 0.2rem 0.5rem 0.01rem var(--btn-highlight-color),
+    inset 0rem 0.3rem 0.3rem -0.1rem var(--btn-highlight-color);
+  transition: var(--btn-hover-transition);
+}
+
+.app-btn-text {
+  color: var(--font-color2);
+  overflow: hidden;
+  text-transform: uppercase;
+  margin-right: 0.75rem;
+  transition: var(--btn-font-bounce2);
+  font-size: 0.8rem;
+  padding-left: 4rem;
+  text-shadow: 0.04rem 0.04rem 0.2rem var(--btn-shadow-color);
+}
+
+.menu {
   width: 19.6rem;
   height: 7rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
-}
-
-.ctg {
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
 }
 
 .home {
@@ -351,7 +378,7 @@ iframe {
   border: solid 0.12rem var(--nord-blue4);
   box-shadow: 0.05rem 0.1rem 0.3rem 0.05rem var(--btn-shadow-color);
   background: transparent;
-  width: 46vw;
+  width: 37rem;
   z-index: 1;
   overflow: hidden;
 }
@@ -404,11 +431,6 @@ input::-webkit-input-placeholder {
   color: var(--font-color2);
 }
 
-/* i {
-  padding: 5px;
-  color: white
-} */
-
 input,
 input:focus {
   outline: 0;
@@ -445,6 +467,172 @@ input:focus {
   width: 10rem;
 }
 
+footer {
+  z-index: 99;
+  font-size: 1.03rem;
+  font-weight: 200;
+  position: fixed;
+  text-transform: uppercase;
+  bottom: 0;
+  width: 100%;
+  height: 1.35rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0.04rem 0.04rem 0.3rem var(--font-color2);
+  background: rgb(76, 86, 106);
+  background: linear-gradient(
+    180deg,
+    rgba(76, 86, 106, 0) 0%,
+    rgba(76, 86, 106, 1) 30%
+  );
+}
+
+footer span {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+footer span * {
+  font-size: 0.7rem;
+  padding: 0 0.2rem;
+  cursor: default;
+}
+
+footer span h2 {
+  padding: 0 1rem;
+}
+
+footer span h3 {
+  font-weight: 200;
+}
+
+footer span p {
+  font-weight: 100;
+  font-size: 0.5rem;
+  padding-top: 0.1rem;
+}
+
+footer span a {
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: var(--font-color2);
+  text-decoration: underline;
+  text-shadow: 0.04rem 0.04rem 0.2rem var(--font-color2);
+}
+
+footer a:hover {
+  color: var(--font-color3);
+  text-shadow: 0.05rem 0.05rem 5rem 5rem var(--btn-highlight-color);
+  text-decoration: underline;
+  text-decoration-color: var(--font-color2);
+}
+
+@media (max-width: 800px) {
+  #homeText,
+  #logoutText {
+    font-size: 1rem;
+  }
+
+  #homeText {
+    padding-left: 0.5rem;
+  }
+
+  #logoutText {
+    right: 4.1rem;
+  }
+
+  #homeSection {
+    width: 95vw;
+  }
+
+  .search-wrapper {
+    width: 74vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .apps {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  #app-section {
+    padding-bottom: 3rem;
+  }
+
+  .ctg {
+    width: 80%;
+    max-width: 15rem;
+  }
+
+  .app-btn-text {
+    width: 67%;
+  }
+
+  /* */
+
+  #homeText,
+  #logoutText {
+    display: none;
+    width: 0;
+  }
+
+  /*  */
+
+  .activeFrame,
+  .activeFrame:hover > .btn-text {
+    width: var(--btn-size-adjusted);
+    height: var(--btn-size-adjusted);
+    margin: var(--btn-margin-adjusted);
+    box-shadow: 0.3rem 0.3rem 1rem 0.1rem var(--btn-shadow-color),
+      inset -0.1rem -0.1rem 0.5rem 0.1rem var(--btn-border-color2),
+      inset 0.1rem 0.15rem 0.5rem 0.3rem var(--btn-highlight-color);
+  }
+
+  #btnMenu:hover,
+  #btnJellyfin:hover,
+  #btnHA:hover,
+  #btnNextcloud:hover {
+    width: var(--btn-size-adjusted);
+    height: var(--btn-size-adjusted);
+    margin: var(--btn-margin-adjusted);
+    box-shadow: 0.3rem 0.3rem 1rem 0.1rem var(--btn-shadow-color),
+      inset -0.1rem -0.1rem 0.5rem 0.1rem var(--btn-border-color2),
+      inset 0.1rem 0.15rem 0.5rem 0.3rem var(--btn-highlight-color);
+  }
+
+  .activeFrame > .btn-text,
+  .activeFrame:hover > .btn-text {
+    width: 0;
+  }
+
+  /*  */
+}
+
 .hidden {
   display: none;
+}
+
+@media (max-width: 500) {
+  #bookmarkSection {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .nav {
+    max-width: 23rem;
+  }
+
+  #homeSection,
+  #bookmarkSection {
+    position: relative;
+  }
 }

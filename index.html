@@ -23,13 +23,15 @@
   </head>
   <body>
     <div class="nav">
-      <div id="goHome" class="homeTip">
-        <span class="homeTipText">go home</span>
-        <i id="btnHome" class="fa-solid fa-house welcomeHome"></i>
-      </div>
+      <a href="#"
+        id="goHome" 
+        class="homeTip">
+        <i id="btnHome" class="navIcon fa-solid fa-house welcomeHome"></i>
+        <span id="homeText" class="homeTipText">go home</span>
+      </a>
       <a href="https://ashserv.com/authelia/logout" target="_top" id="logout" class="logoutTip">
+        <i id="btnLogout" class="navIcon fa-solid fa-right-from-bracket"></i>
         <span class="logoutTipText">logout</span>
-        <i id="btnLogout" class="fa-solid fa-right-from-bracket"></i>
       </a>
       <a
         href="#"
@@ -61,7 +63,7 @@
         class="btn"
         style="background-image: url(/images/photoprism.png)"
       >
-        <span class="btn-text">PhotoPrism</span>
+        <span class="btn-text">photos</span>
       </a>
     </div>
     <iframe
@@ -72,22 +74,24 @@
       allow="fullscreen"
       allow-same-origin
     ></iframe>
-    <div id="photoSection" class="photos hidden">
+    <div id="app-section" class="apps hidden">
       <div id="ctg1" class="ctg">
-        <a
-          href="https://mcphotos.ashserv.com"
-          target="_blank"
-          class="photoFrame btn"
-          style="background-image: url(/images/photoprism.png)"
-        ><span class="btn-text">MC</span></a>
       </div>
       <div id="ctg2" class="ctg">
         <a
+          href="https://mcphotos.ashserv.com"
+          target="_blank"
+          class="appFrame app-btn"
+          style="background-image: url(/images/photoprism.png)"
+        ><span class="app-btn-text">mc</span></a>
+        <a
           href="https://dphotos.ashserv.com"
           target="_blank"
-          class="photoFrame btn"
+          class="appFrame app-btn"
           style="background-image: url(/images/photoprism.png)"
-        ><span class="btn-text">dave</span></a>
+        ><span class="app-btn-text">dave</span></a>
+      </div>
+      <div id="ctg3" class="ctg">
       </div>
     </div>
     <div id="homeSection" class="home">
@@ -100,9 +104,10 @@
           <input
             type="text"
             name="q"
-            placeholder="search Google"
+            placeholder="search Google ..."
             class="inputStyle"
-            tabindex="0"
+            id="inputSearch"
+            autofocus
           />
           <input type="submit" value="&#xf002" class="fa-solid fa-house submitStyle" />
         </form>
@@ -116,5 +121,16 @@
         </a>
       </div>
     </div>
+    <footer>
+      <span>
+        <h3>Cuttlefish</h3>
+        <p> by </p>
+        <a href="https://www.flaticon.com/free-icons/cuttlefish" title="cuttlefish icons" target="_blank">Freepik</a>
+        <h2>   |   </h2>
+        <h3>icons</h3>
+        <p> by </p>
+        <a href="https://fontawesome.com/" title="FontAwesome" target="_blank">FontAwesome</a>
+      </span>
+    </footer>
   </body>
 </html>

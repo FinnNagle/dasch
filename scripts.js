@@ -5,8 +5,10 @@ const btnHA = document.getElementById("btnHA")
 const frame2 = document.getElementById("content")
 const btnHome = document.getElementById("btnHome")
 const homeSection = document.getElementById("homeSection")
-const photoSection = document.getElementById("photoSection")
+const appSection = document.getElementById("app-section")
 const hometip = document.getElementById("goHome")
+const hometext = document.getElementById("homeText")
+const inputsearch = document.getElementById("inputSearch")
 const body = document.body
 
 // document.getElementsById("btnJellyfin").tabIndex = "1"
@@ -39,9 +41,11 @@ function goHome() {
   btnNextcloud.classList.remove("activeFrame")
   btnMenu.classList.remove("activeFrame")
   btnHA.classList.remove("activeFrame")
-  photoSection.classList.add("hidden")
+  appSection.classList.add("hidden")
   homeSection.classList.remove("hidden")
   hometip.classList.remove("notHome")
+  hometext.classList.add("hidden")
+  inputsearch.focus()
 }
 
 function clickAway() {
@@ -62,9 +66,10 @@ function jellyfin() {
     btnMenu.classList.remove("activeFrame")
     btnHA.classList.remove("activeFrame")
     homeSection.classList.add("hidden")
-    photoSection.classList.add("hidden")
+    appSection.classList.add("hidden")
     frame2.classList.remove("hidden")
     hometip.classList.add("notHome")
+    hometext.classList.remove("hidden")
   }
 }
 
@@ -79,9 +84,10 @@ function cloud() {
     btnMenu.classList.remove("activeFrame")
     btnHA.classList.remove("activeFrame")
     homeSection.classList.add("hidden")
-    photoSection.classList.add("hidden")
+    appSection.classList.add("hidden")
     frame2.classList.remove("hidden")
     hometip.classList.add("notHome")
+    hometext.classList.remove("hidden")
   }
 }
 
@@ -93,9 +99,10 @@ function menu() {
   btnNextcloud.classList.remove("activeFrame")
   btnMenu.classList.add("activeFrame")
   btnHA.classList.remove("activeFrame")
-  photoSection.classList.remove("hidden")
+  appSection.classList.remove("hidden")
   homeSection.classList.add("hidden")
   hometip.classList.add("notHome")
+  hometext.classList.remove("hidden")
 }
 
 function assist() {
@@ -109,8 +116,9 @@ function assist() {
     btnMenu.classList.remove("activeFrame")
     btnHA.classList.add("activeFrame")
     homeSection.classList.add("hidden")
-    photoSection.classList.add("hidden")
+    appSection.classList.add("hidden")
     frame2.classList.remove("hidden")
     hometip.classList.add("notHome")
+    hometext.classList.remove("hidden")
   }
 }

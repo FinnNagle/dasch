@@ -23,13 +23,15 @@
   </head>
   <body>
     <div class="nav">
-      <div id="goHome" class="homeTip">
-        <span class="homeTipText">go home</span>
-        <i id="btnHome" class="fa-solid fa-house welcomeHome"></i>
-      </div>
+      <a href="#"
+        id="goHome" 
+        class="homeTip">
+        <i id="btnHome" class="navIcon fa-solid fa-house welcomeHome"></i>
+        <span id="homeText" class="homeTipText">go home</span>
+      </a>
       <a href="https://ashserv.com/authelia/logout" target="_top" id="logout" class="logoutTip">
-        <span class="logoutTipText">logout</span>
-        <i id="btnLogout" class="fa-solid fa-right-from-bracket"></i>
+        <i id="btnLogout" class="navIcon fa-solid fa-right-from-bracket"></i>
+        <span id="logoutText" class="logoutTipText">logout</span>
       </a>
       <a
         href="#"
@@ -59,9 +61,9 @@
         href="#"
         id="btnMenu"
         class="btn"
-        style="background-image: url(/images/photoprism.png)"
+        style="background-image: url(/images/cuttlefish.png)"
       >
-        <span class="btn-text">PhotoPrism</span>
+        <span class="btn-text">apps</span>
       </a>
     </div>
     <iframe
@@ -72,49 +74,108 @@
       allow="fullscreen"
       allow-same-origin
     ></iframe>
-    <div id="photoSection" class="photos hidden">
+    <div id="app-section" class="apps hidden">
       <div id="ctg1" class="ctg">
         <a
-          href="https://mcphotos.ashserv.com"
+          href="http://192.168.1.1/"
           target="_blank"
-          class="photoFrame btn"
+          class="appFrame app-btn"
           style="background-image: url(/images/photoprism.png)"
-        ><span class="btn-text">MC</span></a>
+        ><span class="app-btn-text">unifi local</span></a>
+        <a
+          href="https://unifi.ui.com/dashboard"
+          target="_blank"
+          class="appFrame app-btn"
+          style="background-image: url(/images/photoprism.png)"
+        ><span class="app-btn-text">unifi dash</span></a>
+        <a
+          href="http://192.168.2.28:5000/"
+          target="_blank"
+          class="appFrame app-btn"
+          style="background-image: url(/images/photoprism.png)"
+        ><span class="app-btn-text">synnas</span></a>
       </div>
       <div id="ctg2" class="ctg">
         <a
-          href="https://dphotos.ashserv.com"
+          href="https://sonarr.ashserv.com"
           target="_blank"
-          class="photoFrame btn"
+          class="appFrame app-btn"
           style="background-image: url(/images/photoprism.png)"
-        ><span class="btn-text">dave</span></a>
+        ><span class="app-btn-text">sonarr</span></a>
+        <a
+          href="https://radarr.ashserv.com"
+          target="_blank"
+          class="appFrame app-btn"
+          style="background-image: url(/images/photoprism.png)"
+        ><span class="app-btn-text">radarr</span></a>
+        <a
+          href="https://lidarr.ashserv.com"
+          target="_blank"
+          class="appFrame app-btn"
+          style="background-image: url(/images/photoprism.png)"
+        ><span class="app-btn-text">lidarr</span></a>
+      </div>
+      <div id="ctg3" class="ctg">
+        <a
+          href="https://ashserv.com/authelia"
+          target="_blank"
+          class="appFrame app-btn"
+          style="background-image: url(/images/photoprism.png)"
+        ><span class="app-btn-text">authelia</span></a>
+        <a
+          href="https://qb.ashserv.com"
+          target="_blank"
+          class="appFrame app-btn"
+          style="background-image: url(/images/photoprism.png)"
+        ><span class="app-btn-text">qbittorrent</span></a>
+        <a
+          href="https://jackett.ashserv.com"
+          target="_blank"
+          class="appFrame app-btn"
+          style="background-image: url(/images/photoprism.png)"
+        ><span class="app-btn-text">jackett</span></a>
+        <a
+          href="https://filebrowser.ashserv.com"
+          target="_blank"
+          class="appFrame app-btn"
+          style="background-image: url(/images/photoprism.png)"
+        ><span class="app-btn-text">filebrowser</span></a>
       </div>
     </div>
     <div id="homeSection" class="home">
       <div class="search-wrapper">
         <form
-          action="http://www.google.com/search"
+          action="http://www.duckduckgo.com/"
           method="get"
           class="searchForm"
         >
           <input
             type="text"
             name="q"
-            placeholder="search Google ..."
+            placeholder="search DuckDuckGo ..."
             class="inputStyle"
-            tabindex="0"
+            id="inputSearch"
+            autofocus
           />
           <input type="submit" value="&#xf002" class="fa-solid fa-house submitStyle" />
         </form>
       </div>
-      <div class="bookmarks">
-        <a href="https://gmail.com"
-        target="_top"><img src="/images/gmail-logo-nord.png" id="gmail-img" class="bookmark-img"/>
-        </a>
-        <a href="https://facebook.com"
-        target="_top"><img src="/images/facebook-nord.png" id="fb-img" class="bookmark-img"/>
-        </a>
+      <div id="bookmarkSection" class="bookmarks">
+        <!-- <a href="https://youtube.com"
+        target="_top"><img src="/images/youtube.png" id="gmail-img" class="bookmark-img"/>
+        </a> -->
       </div>
     </div>
+    <footer>
+      <span>
+        <h3>Cuttlefish</h3>
+        <p> by </p>
+        <a href="https://www.flaticon.com/free-icons/cuttlefish" title="cuttlefish icons" target="_blank">Freepik</a>
+        <h2>   |   </h2>
+        <h3>icons</h3>
+        <p> by </p>
+        <a href="https://fontawesome.com/" title="FontAwesome" target="_blank">FontAwesome</a>
+      </span>
+    </footer>
   </body>
 </html>

@@ -115,7 +115,7 @@ function assist() {
   if (btnHA.classList.contains("activeFrame")) {
     frame2.refresh()
   } else {
-    frame2.src = "https://assist.ashserv.com/lovelace/default_view"
+    frame2.src = "https://assist.ashserv.com/lovelace/dtu"
     btnJellyfin.classList.remove("activeFrame")
     btnNextcloud.classList.remove("activeFrame")
     btnMenu.classList.remove("activeFrame")
